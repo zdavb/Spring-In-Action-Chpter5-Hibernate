@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+       <context:component-scan base-package="com.dacas.dao"/>
+       <context:property-placeholder location="classpath:db.properties"/>
+       <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+              <property name="driverClassName" value="${jdbc.driverClass}"/>
+              <property name="url" value="${jdbc.jdbcUrl}"/>
+              <property name="username" value="${jdbc.user}"/>
+              <property name="password" value="${jdbc.password}"/>
+       </bean>
+
+       <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"/>
+              <property name="mappingResources">
+                     <list>
+                            <value>com/dacas/data/Bound.hbm.xml</value>
+                            <value>com/dacas/data/Card.hbm.xml</value>
+                     </list>
+              </property>
+              <property name="hibernateProperties">
+                     <props>
+                            <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
+                     </props>
+              </property>
+       </bean>
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-9 19:27:44 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.dacas.data.Card" table="card">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="cardSn" type="java.lang.String">
+            <column name="CARD_SN" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="STATUS" />
+        </property>
+        <property name="color" type="java.lang.Integer">
+            <column name="COLOR" />
+        </property>
+        <property name="publicKey" type="java.lang.String">
+            <column name="PUBLIC_KEY" />
+        </property>
+    </class>
+</hibernate-mapping>
